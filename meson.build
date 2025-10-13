@@ -34,6 +34,8 @@ thosttraderapi_lib = []
 extra_cpp_args = []
 extra_link_args = []
 
+install_rpath_value = '$ORIGIN'
+
 # 设置Windows特定编译选项
 if host_machine.system() == 'windows'
   # Windows编译器设置
@@ -101,6 +103,7 @@ md_module = py.extension_module(
   cpp_args: extra_cpp_args,
   link_args: extra_link_args,
   install: true,
+  install_rpath: install_rpath_value,
   subdir: 'vnpy_mini/api'
 )
 
@@ -113,6 +116,7 @@ td_module = py.extension_module(
   cpp_args: extra_cpp_args,
   link_args: extra_link_args,
   install: true,
+  install_rpath: install_rpath_value,
   subdir: 'vnpy_mini/api'
 )
 
