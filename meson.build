@@ -70,6 +70,7 @@ else  # Linux
   
   extra_link_args = [
     '-lstdc++',
+    '-Wl,-rpath,$ORIGIN',  # 添加rpath设置，使库能在运行时找到同目录下的动态库
   ]
   
   # 设置库目录
@@ -96,15 +97,10 @@ md_module = py.extension_module(
   'vnminimd',
   sources: ['vnpy_mini/api/vnmini/vnminimd/vnminimd.cpp'],
   include_directories: include_dirs,
-  dependencies: [py_dep],
+  dependencies: [py_dep, thostmduserapi_lib],
   cpp_args: extra_cpp_args,
-  link_args: extra_link_args + [
-    '-L' + (meson.current_source_dir() / 'vnpy_mini/api'),
-    '-lthostmduserapi_se',
-    '-Wl,-rpath,$ORIGIN'
-  ],
+  link_args: extra_link_args,
   install: true,
-  install_rpath: '$ORIGIN',
   subdir: 'vnpy_mini/api'
 )
 
@@ -113,15 +109,10 @@ td_module = py.extension_module(
   'vnminitd',
   sources: ['vnpy_mini/api/vnmini/vnminitd/vnminitd.cpp'],
   include_directories: include_dirs,
-  dependencies: [py_dep],
+  dependencies: [py_dep, thosttraderapi_lib],
   cpp_args: extra_cpp_args,
-  link_args: extra_link_args + [
-    '-L' + (meson.current_source_dir() / 'vnpy_mini/api'),
-    '-lthosttraderapi_se',
-    '-Wl,-rpath,$ORIGIN'
-  ],
+  link_args: extra_link_args,
   install: true,
-  install_rpath: '$ORIGIN',
   subdir: 'vnpy_mini/api'
 )
 
