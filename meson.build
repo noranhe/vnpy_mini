@@ -100,7 +100,7 @@ md_module = py.extension_module(
   cpp_args: extra_cpp_args,
   link_args: extra_link_args + [
     '-L' + (meson.current_source_dir() / 'vnpy_mini/api'),
-    '-lthostmduserapi_se',
+    '-lthostmduserapi',
     '-Wl,-rpath,$ORIGIN'
   ],
   install: true,
@@ -117,7 +117,7 @@ td_module = py.extension_module(
   cpp_args: extra_cpp_args,
   link_args: extra_link_args + [
     '-L' + (meson.current_source_dir() / 'vnpy_mini/api'),
-    '-lthosttraderapi_se',
+    '-lthosttraderapi',
     '-Wl,-rpath,$ORIGIN'
   ],
   install: true,
